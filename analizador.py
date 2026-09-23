@@ -1,0 +1,1 @@
+print("analizador de alumnos xd")
