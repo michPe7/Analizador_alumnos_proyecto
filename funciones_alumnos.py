@@ -27,60 +27,52 @@ def agregar_alumno(lista_alumnos,nombre, apellidos, edad, carrera, grupo):
    lista_alumnos.append(alumno_nuevo)
 
 def modificar_alumno(alumno): #se hara un llamado antes a buscar alumno y como devolvera el dict entonces sabre que hacer
+
    listas_opciones = ['nombre', 'apellidos', 'edad', 'carrera','grupo','calificacion']
    print('Qué deseas modificar? nombre|apellidos|edad|carrera|grupo|calificacion')
    eleccion = input('')
-   if eleccion in listas_opciones:
+
+   if eleccion in listas_opciones and eleccion not in ("edad","calificacion"):
       modificacion = input('Ingrese el nuevo valor: ')
       alumno[eleccion] = modificacion
+
+
+   elif eleccion == "edad":
+        while True:
+         try:
+          modificacion = int(input('Ingrese la edad: '))
+          if modificacion not in range(18,32):
+                 print("Esa edad no es válida")
+          else:
+                alumno[eleccion] = modificacion
+                break
+         except ValueError:
+                print("No has introducido un numero")
+
+
+   elif eleccion == "calificacion":
+        while True:
+         try:
+                modificacion = int(input('Ingrese la calificacion: '))
+                if modificacion not in range(1,11):
+                  print("Esa calificacion no es válida")
+
+                else:
+                  alumno[eleccion] = modificacion
+                  break
+         except ValueError:
+                print("No has introducido un numero")
+         
+      
    else:
       print("Has ingresado una opcion no valida")
 
-
-alumnos = [
-    {
-        "nombre": "Michell",
-        "apellidos": "Peralta Reyes",
-        "edad": 18,
-        "carrera": "Inegenieria en datos",
-        "grupo": "seccion 2",
-        "calificacion": 10
-    },
-    {
-            "nombre": "Janet Itzel",
-            "apellidos": "Lara Santiz",
-            "edad": 18,
-            "carrera": "Inegenieria en datos",
-            "grupo": "seccion 3",
-            "calificacion": 9
-    },
-    {
-            "nombre": "Lizandro",
-            "apellidos": "Gomez Vera",
-            "edad": 20,
-            "carrera": "Inegenieria en redes",
-            "grupo": "605",
-            "calificacion": 10
-    },
-    {
-            "nombre": "Joseph",
-            "apellidos": "Lopez Luis",
-            "edad": 18,
-            "carrera": "Gastronomia",
-            "grupo": "G17",
-            "calificacion": 8
-    },
-    {
-            "nombre": "Carlos Sayed",
-            "apellidos": "Villagomez Sanchez",
-            "edad": 18,
-            "carrera": "Inegenieria en datos",
-            "grupo": "seccion 1",
-            "calificacion": 7
-    }
-]   
-
-print(mostrar_alumnos(alumnos))
-alumno = buscar_alumno(alumnos=alumnos,nombre="Michell", apellido='Peralta')
-modificar_alumno(alumno)
-print(mostrar_alumnos(alumnos))
+def validar_opcion(opcion):
+    try:
+        opcion = int(opcion)
+        if opcion in range(1,5):
+            return opcion
+        else:
+            print("Por favor escoge un numero de opción válido")
+    except ValueError:
+         print("Esa eleccion no es válida, por favor ingresa el número de opción que deseas")

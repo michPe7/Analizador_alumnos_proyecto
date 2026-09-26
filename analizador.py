@@ -1,3 +1,5 @@
+from funciones_alumnos import *
+import time
 
 alumnos = [
     {
@@ -42,9 +44,26 @@ alumnos = [
     }
 ]   
 
-a = "Alice"
-b = 25
+"""Estructua del proyecto"""
 
-# Left-aligned (<), Right-aligned (>), and Center-aligned (^)
-print(f"Name: {a:<10} Age: {b:>5} ")
-print(f"Name: {a:^10} Age: {b:^5} ")
+def main():
+    programa = True
+    while True:
+        print("Bienvenido al analizador de tareas")
+        time.sleep(1.5)
+        print('*' * 95)
+        print("Estas son las opciones del analizador")
+        print(''' 1: Mostrar a los alumnos
+        2: Buscar al alumno
+        3: Agregar alumno
+        4: Modificar alumno
+''')
+        opcion_elegida = validar_opcion(input("Escoge el número de opción para realizar "))
+        match opcion_elegida:
+            case 1:
+                print("Cargando...")
+                time.sleep(1.5)
+                mostrar_alumnos(alumnos)
+            
+
+main()
