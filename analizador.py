@@ -48,8 +48,8 @@ alumnos = [
 
 def main():
     programa = True
+    print("Bienvenido al analizador de tareas")
     while True:
-        print("Bienvenido al analizador de tareas")
         time.sleep(1.5)
         print('*' * 95)
         print("Estas son las opciones del analizador")
@@ -64,6 +64,7 @@ def main():
                 print("Cargando...")
                 time.sleep(1.5)
                 mostrar_alumnos(alumnos)
+                time.sleep(3)
             
 
 main()
