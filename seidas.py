@@ -1,0 +1,1 @@
+print("hola soy sayed y soy gay xd")
