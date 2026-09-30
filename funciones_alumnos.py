@@ -15,18 +15,18 @@ def buscar_alumno(alumnos,nombre, apellido):
     return False
          
 
-def agregar_alumno(lista_alumnos,nombre, apellidos, edad, carrera, grupo):
+def agregar_alumno(lista_alumnos,nombre, apellidos, edad, carrera, grupo, calificacion):
    alumno_nuevo = {
       'nombre': nombre,
       "apellidos": apellidos,
       "edad": edad,
       "carrera": carrera,
       "grupo": grupo,
-      "calificacion": 0
+      "calificacion": calificacion
    }
    lista_alumnos.append(alumno_nuevo)
 
-def modificar_alumno(alumno): #se hara un llamado antes a buscar alumno y como devolvera el dict entonces sabre que hacer
+def modificar_alumno(alumno): #se hara un llamado a buscar alumno, de ahí agregara como parametro al alumno
 
    listas_opciones = ['nombre', 'apellidos', 'edad', 'carrera','grupo','calificacion']
    print('Qué deseas modificar? nombre|apellidos|edad|carrera|grupo|calificacion')
@@ -70,9 +70,10 @@ def modificar_alumno(alumno): #se hara un llamado antes a buscar alumno y como d
 def validar_opcion(opcion):
     try:
         opcion = int(opcion)
-        if opcion in range(1,5):
+        if opcion in range(1,6):
             return opcion
         else:
             print("Por favor escoge un numero de opción válido")
     except ValueError:
          print("Esa eleccion no es válida, por favor ingresa el número de opción que deseas")
+

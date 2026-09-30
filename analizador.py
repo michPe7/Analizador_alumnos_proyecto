@@ -57,6 +57,7 @@ def main():
         2: Buscar al alumno
         3: Agregar alumno
         4: Modificar alumno
+        5: Salir
 ''')
         opcion_elegida = validar_opcion(input("Escoge el número de opción para realizar "))
         match opcion_elegida:
@@ -66,5 +67,47 @@ def main():
                 mostrar_alumnos(alumnos)
                 time.sleep(3)
             
+            case 2:
+                print("Cargando...")
+                time.sleep(1.5)
+                nombre_alumno = (input("Ingresa el nombre del alumno: ").lower()).capitalize()
+                apellido_alumno = (input("Ingresa el apellido del alumno: ").lower()).capitalize()
+                alumno = buscar_alumno(alumnos, nombre_alumno, apellido_alumno)
+                if alumno:
+                    print(f'{alumno["nombre"]:<16}|{alumno["apellidos"]:<21}|{alumno["edad"]:<5}|{alumno["carrera"]:<20}|{alumno["grupo"]:<16}|{alumno["calificacion"]:<5}')
+                else:
+                    print("El alumno no ha sido encontrado o no existe")
+                time.sleep(3)
+            
+            case 3:
+                nombre_alumno = (input("Ingresa el nombre del alumno: ").lower()).capitalize()
+                apellido_alumno = (input("Ingresa el apellido del alumno: ").lower()).capitalize()
+                edad_alumno = int(input("Ingresa la edad del alumno: "))
+                carrera_alumno = (input("Ingresa la carrera del alumno: ").lower()).capitalize()
+                grupo_alumno = (input("Ingresa el grupo del alumno: ").lower()).capitalize()
+                calificacion_alumno = int(input("Ingresa la calificacion del alumno: "))
+                agregar_alumno(alumnos, nombre_alumno, apellido_alumno, edad_alumno, carrera_alumno, grupo_alumno, calificacion_alumno)
+                print("El alumno ha sido agregado exitosamente")
+                time.sleep(3)
+
+
+            case 4:
+                nombre_alumno = input("Escoge el nombre del alumno que deseas modificar: ")
+                apellido_alumno = input("Escoge el apellido del alumno que deseas modificar: ")
+                alumno = buscar_alumno(alumnos, nombre_alumno, apellido_alumno)
+                time.sleep(2)
+                if alumno:
+                        modificar_alumno(alumno)
+                else:
+                    print("El alumno no ha sido encontrado o no existe")
+
+
+            case 5:
+                break
+            case _:
+                print("Esa opción no es valida")
+
+                
+        
 
 main()
