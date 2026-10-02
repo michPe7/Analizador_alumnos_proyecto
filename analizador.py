@@ -41,7 +41,17 @@ alumnos = [
             "carrera": "Inegenieria en datos",
             "grupo": "seccion 1",
             "calificacion": 7
+    },
+
+    {
+                "nombre": "Carlos",
+                "apellidos": "Enrique",
+                "edad": 19,
+                "carrera": "Inegenieria en datos",
+                "grupo": "seccion 1",
+                "calificacion": 5
     }
+
 ]   
 
 """Estructua del proyecto"""
@@ -58,9 +68,17 @@ def main():
         3: Agregar alumno
         4: Modificar alumno
         5: Salir
-''')
+''')    
+    
         opcion_elegida = validar_opcion(input("Escoge el número de opción para realizar "))
+        if not opcion_elegida:
+            continue
+                
+        
+
+        
         match opcion_elegida:
+            
             case 1:
                 print("Cargando...")
                 time.sleep(1.5)
